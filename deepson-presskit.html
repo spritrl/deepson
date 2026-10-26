@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DEEPSON | DJ & Producer French Riviera · Press Kit</title>
+<meta name="description" content="Press kit officiel de DEEPSON, DJ & Producer de la Côte d'Azur. House, Deep House, Soulful et touches R'n'B pour clubs, beach clubs et événements premium de Monaco à Saint-Tropez.">
+<meta property="og:title" content="DEEPSON | DJ & Producer French Riviera">
+<meta property="og:description" content="House chic de la Riviera. Monaco, Cannes, Nice, Saint-Tropez.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<!-- <meta property="og:image" content="images/og-deepson.jpg"> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   DEEPSON PRESS KIT
+   Palette reprise de l'ancien kit : noir, marbre, rouge profond
+   ========================================================= */
+:root{
+  --ink:#0b0b0c;
+  --ink-2:#141416;
+  --ink-3:#1d1d20;
+  --bone:#efebe6;
+  --bone-dim:#a9a49e;
+  --red:#c1121f;
+  --red-deep:#7a0a12;
+  --line:color-mix(in oklab, var(--bone) 14%, transparent);
+  --display:"Anton", "Impact", sans-serif;
+  --sans:"Inter", system-ui, sans-serif;
+  --serif:"Instrument Serif", Georgia, serif;
+  --pad:clamp(16px, 5vw, 72px);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+@property --a{syntax:"<angle>";inherits:false;initial-value:0deg}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--ink);color:var(--bone);font-family:var(--sans);font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--red);color:#fff}
+
+/* Grain + marbre en fond (aucune image nécessaire) */
+.grain{position:fixed;inset:-50%;pointer-events:none;z-index:100;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,3%)}80%{transform:translate(3%,1%)}100%{transform:translate(0,0)}}
+.marble{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='turbulence' baseFrequency='.004 .012' numOctaves='5' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -2.2 1.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");background-size:cover}
+
+/* ---------- Curseur ---------- */
+.cursor{position:fixed;top:0;left:0;width:10px;height:10px;border-radius:50%;background:var(--red);pointer-events:none;z-index:200;translate:-50% -50%;transition:width .3s var(--ease),height .3s var(--ease),background .3s;mix-blend-mode:normal}
+.cursor.big{width:64px;height:64px;background:color-mix(in oklab,var(--red) 35%,transparent);backdrop-filter:blur(2px)}
+@media (hover:none){.cursor{display:none}}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px var(--pad);transition:background .4s,padding .4s,border-color .4s;border-bottom:1px solid transparent}
+.nav.scrolled{background:color-mix(in oklab,var(--ink) 78%,transparent);backdrop-filter:blur(14px) saturate(140%);padding-block:12px;border-color:var(--line)}
+.logo{font-family:var(--display);font-size:26px;letter-spacing:.04em;line-height:1}
+.logo span{color:var(--red)}
+.nav ul{display:flex;gap:28px;list-style:none;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.nav ul a{position:relative;color:var(--bone-dim);transition:color .3s}
+.nav ul a::after{content:"";position:absolute;left:0;bottom:-4px;width:100%;height:1px;background:var(--red);scale:0 1;transform-origin:right;transition:scale .4s var(--ease)}
+.nav ul a:hover{color:var(--bone)}
+.nav ul a:hover::after{scale:1 1;transform-origin:left}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--bone);transition:background .35s var(--ease),color .35s,border-color .35s,translate .35s var(--ease);white-space:nowrap}
+.btn:hover{translate:0 -2px}
+.btn-red{background:var(--red);border-color:var(--red);color:#fff}
+.btn-red:hover{background:var(--bone);border-color:var(--bone);color:var(--ink)}
+.btn-ghost:hover{background:var(--bone);color:var(--ink)}
+.btn svg{width:16px;height:16px}
+.burger{display:none;background:none;border:0;color:var(--bone);width:40px;height:40px}
+@media (max-width:900px){
+  .nav ul{position:fixed;inset:0;flex-direction:column;justify-content:center;align-items:center;gap:30px;font-size:22px;background:var(--ink);clip-path:circle(0 at calc(100% - 40px) 36px);transition:clip-path .7s var(--ease)}
+  .nav.open ul{clip-path:circle(150% at calc(100% - 40px) 36px)}
+  .nav .btn-red{display:none}
+  .burger{display:block;position:relative;z-index:2}
+}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100svh;display:grid;grid-template-columns:1.1fr .9fr;align-items:end;gap:40px;padding:130px var(--pad) 60px;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;opacity:.13}
+.hero .marble-bg{position:absolute;inset:0;z-index:-2;opacity:.12}
+.hero::after{content:"";position:absolute;inset:auto -20% -40% 30%;height:80%;z-index:-1;background:radial-gradient(closest-side,color-mix(in oklab,var(--red) 45%,transparent),transparent);filter:blur(40px);animation:pulse 6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.55;scale:1.08}}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--bone-dim)}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--red)}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(64px,13vw,220px);line-height:.82;letter-spacing:-.01em;margin:22px 0 10px;text-transform:uppercase}
+.hero h1 .ch{display:inline-block;translate:0 110%;animation:rise 1.1s var(--ease) forwards;animation-delay:calc(var(--i) * 70ms + .2s)}
+.hero h1 .clip{display:block;overflow:hidden;padding-bottom:.04em;white-space:nowrap}
+@keyframes rise{to{translate:0 0}}
+.hero .role{font-family:var(--serif);font-style:italic;font-size:clamp(24px,3vw,38px);color:var(--bone)}
+.hero .role b{font-family:var(--sans);font-style:normal;font-weight:600;font-size:.42em;letter-spacing:.3em;text-transform:uppercase;color:var(--red);vertical-align:middle;margin-left:12px}
+.hero p.lead{max-width:520px;margin:22px 0 32px;color:var(--bone-dim);font-size:clamp(15px,1.2vw,17px)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.fade-up{opacity:0;translate:0 24px;animation:fadeup 1s var(--ease) forwards;animation-delay:var(--d,1s)}
+@keyframes fadeup{to{opacity:1;translate:0 0}}
+
+.hero>div{min-width:0}
+.hero-visual{position:relative;align-self:stretch;min-height:520px}
+.hero-visual .frame{position:absolute;inset:0 0 0 8%;border-radius:220px 220px 6px 6px;overflow:hidden;background:var(--ink-3)}
+.frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,var(--ink) 100%)}
+.frame img,.frame video{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1)}
+.ring{position:absolute;right:-30px;top:40px;width:150px;aspect-ratio:1;animation:spin 18s linear infinite}
+.ring text{font-family:var(--sans);font-size:9.5px;letter-spacing:.32em;fill:var(--bone);text-transform:uppercase}
+@keyframes spin{to{rotate:360deg}}
+.now{position:absolute;left:0;bottom:40px;display:flex;align-items:center;gap:14px;padding:14px 18px;background:color-mix(in oklab,var(--ink) 70%,transparent);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:14px;font-size:12px}
+.now small{display:block;color:var(--bone-dim);letter-spacing:.2em;text-transform:uppercase;font-size:10px}
+.eq{display:flex;gap:3px;align-items:flex-end;height:22px}
+.eq i{width:3px;background:var(--red);border-radius:2px;animation:eq 1s ease-in-out infinite;animation-delay:calc(var(--n) * -.17s)}
+@keyframes eq{0%,100%{height:20%}50%{height:100%}}
+
+.stats{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);margin-top:30px}
+.stat{padding:22px 18px 0 0}
+.stat strong{display:block;font-family:var(--display);font-weight:400;font-size:clamp(30px,3.6vw,52px);line-height:1}
+.stat strong em{font-style:normal;color:var(--red)}
+.stat span{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-dim)}
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:110px}
+  .hero-visual{min-height:440px;order:-1}
+  .hero-visual .frame{inset:0}
+  .ring{right:6px;top:10px;width:110px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ---------- Marquee ---------- */
+.marquee{border-block:1px solid var(--line);overflow:hidden;background:var(--red);color:#fff}
+.marquee-track{display:flex;width:max-content;animation:scroll 40s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee span{font-family:var(--display);font-size:clamp(26px,3.4vw,46px);text-transform:uppercase;padding:14px 0;white-space:nowrap}
+.marquee span::after{content:"✦";font-size:.5em;margin:0 32px;vertical-align:middle;opacity:.7}
+@keyframes scroll{to{translate:-50% 0}}
+
+/* ---------- Sections communes ---------- */
+section{padding:clamp(80px,12vw,160px) var(--pad);position:relative}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:20px 60px;align-items:end;margin-bottom:clamp(40px,6vw,80px)}
+.num{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--red)}
+h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(46px,7vw,110px);line-height:.9;letter-spacing:-.005em}
+h2 .it{font-family:var(--serif);font-style:italic;text-transform:none;color:var(--bone-dim);font-size:.8em}
+.sec-head p{color:var(--bone-dim);max-width:460px;justify-self:end}
+@media (max-width:900px){.sec-head{grid-template-columns:1fr}.sec-head p{justify-self:start}}
+
+/* Révélation au scroll : CSS natif si supporté, sinon JS */
+.reveal{opacity:0;translate:0 40px;transition:opacity 1s var(--ease),translate 1s var(--ease)}
+.reveal.in{opacity:1;translate:0 0}
+@supports (animation-timeline: view()){
+  .reveal{opacity:1;translate:none;transition:none;animation:rv linear both;animation-timeline:view();animation-range:entry 0% entry 60%}
+  @keyframes rv{from{opacity:0;translate:0 50px}to{opacity:1;translate:0 0}}
+}
+
+/* Placeholder média (à remplacer par les vraies images / vidéos) */
+.ph{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--ink-3),var(--ink-2));border:1px solid var(--line);display:grid;place-items:center}
+.ph::before{content:"";position:absolute;inset:0;opacity:.18}
+.ph .ph-label{position:relative;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--bone-dim);text-align:center;padding:10px}
+.ph img,.ph video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* ---------- Bio ---------- */
+.bio-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,7vw,110px);align-items:start}
+.bio-img{aspect-ratio:4/5;border-radius:4px;position:sticky;top:110px}
+.bio-img .tag{position:absolute;left:16px;bottom:16px;background:var(--red);color:#fff;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:8px 12px;border-radius:2px}
+.quote{font-family:var(--serif);font-size:clamp(28px,3.4vw,48px);line-height:1.1;margin-bottom:40px}
+.quote::before{content:"“";display:block;font-size:2.4em;line-height:.6;color:var(--red)}
+.bio-text p{color:var(--bone-dim);margin-bottom:18px;font-size:clamp(15px,1.15vw,17px)}
+.bio-text p strong{color:var(--bone);font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.tags li{list-style:none;padding:9px 16px;border:1px solid var(--line);border-radius:999px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;transition:background .3s,border-color .3s,color .3s}
+.tags li:hover{background:var(--red);border-color:var(--red);color:#fff}
+@media (max-width:900px){.bio-grid{grid-template-columns:1fr}.bio-img{position:relative;top:0}}
+
+/* ---------- Références ---------- */
+#venues{background:var(--ink-2)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px}
+.filters button{font:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim);background:none;border:1px solid var(--line);border-radius:999px;padding:10px 18px;cursor:pointer;transition:all .3s}
+.filters button[aria-pressed="true"],.filters button:hover{color:#fff;background:var(--red);border-color:var(--red)}
+.venue-list{list-style:none;border-top:1px solid var(--line)}
+.venue{display:grid;grid-template-columns:60px 1fr auto;align-items:center;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);position:relative;transition:padding .4s var(--ease),opacity .4s,max-height .5s var(--ease);overflow:hidden;max-height:120px}
+.venue::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--red),transparent 70%);scale:0 1;transform-origin:left;transition:scale .5s var(--ease);z-index:0}
+.venue>*{position:relative;z-index:1}
+.venue:hover{padding-left:20px}
+.venue:hover::before{scale:1 1}
+.venue .idx{font-family:var(--serif);font-style:italic;color:var(--bone-dim)}
+.venue .name{font-family:var(--display);font-size:clamp(26px,3.6vw,52px);text-transform:uppercase;line-height:1}
+.venue .city{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--bone-dim)}
+.venue:hover .city,.venue:hover .idx{color:#fff}
+.venue.hide{max-height:0;padding-block:0;opacity:0;border-color:transparent}
+@media (max-width:600px){.venue{grid-template-columns:34px 1fr}.venue .city{grid-column:2}}
+
+/* ---------- Le son ---------- */
+.sound-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.slot{background:var(--ink);padding:34px 26px 30px;min-height:330px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:background .5s}
+.slot:hover{background:var(--ink-3)}
+.slot .time{font-family:var(--display);font-size:54px;line-height:1;color:var(--red)}
+.slot h3{font-family:var(--serif);font-weight:400;font-size:30px;margin:16px 0 10px;line-height:1.05}
+.slot p{color:var(--bone-dim);font-size:14px;flex:1}
+.bpm{margin-top:24px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bone-dim)}
+.bpm .bar{height:3px;background:var(--line);margin-top:10px;border-radius:3px;overflow:hidden}
+.bpm .bar i{display:block;height:100%;width:var(--w);background:linear-gradient(90deg,var(--red-deep),var(--red));transform-origin:left;scale:0 1;transition:scale 1.4s var(--ease) .2s}
+.slot.in .bpm .bar i{scale:1 1}
+@media (max-width:1000px){.sound-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.sound-grid{grid-template-columns:1fr}.slot{min-height:auto}}
+
+/* ---------- Aftermovies ---------- */
+.videos{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:auto auto;gap:16px}
+.video{border-radius:6px;cursor:pointer}
+.video:first-child{grid-row:span 2;aspect-ratio:auto;min-height:520px}
+.video:not(:first-child){aspect-ratio:16/10}
+.video .play{position:absolute;inset:0;margin:auto;width:76px;height:76px;border-radius:50%;background:var(--red);display:grid;place-items:center;transition:scale .4s var(--ease);z-index:2}
+.video .play::after{content:"";border-left:18px solid #fff;border-block:11px solid transparent;margin-left:5px}
+.video:hover .play{scale:1.12}
+.video .cap{position:absolute;left:18px;bottom:16px;z-index:2;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+.video .cap b{display:block;font-family:var(--display);font-weight:400;font-size:24px;letter-spacing:.02em}
+.video .ph-label{position:absolute;top:16px;right:16px}
+@media (max-width:800px){.videos{grid-template-columns:1fr}.video:first-child{min-height:340px;grid-row:auto}}
+
+/* ---------- Galerie ---------- */
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(90px,10vw,150px);gap:12px}
+.gallery .ph{border-radius:4px;transition:filter .5s}
+.gallery .ph img{filter:grayscale(1);transition:filter .6s,scale .8s var(--ease)}
+.gallery .ph:hover img{filter:grayscale(0);scale:1.05}
+.g1{grid-column:span 5;grid-row:span 4}.g2{grid-column:span 4;grid-row:span 2}.g3{grid-column:span 3;grid-row:span 3}
+.g4{grid-column:span 4;grid-row:span 2}.g5{grid-column:span 3;grid-row:span 3}.g6{grid-column:span 4;grid-row:span 2}.g7{grid-column:span 5;grid-row:span 2}
+@media (max-width:800px){.gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}.gallery .ph{grid-column:span 1!important;grid-row:span 1!important}.gallery .g1{grid-column:span 2!important;grid-row:span 2!important}}
+
+/* ---------- Mixes ---------- */
+#mixes{background:var(--ink-2)}
+.mix-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
+.vinyl{aspect-ratio:1;max-width:460px;width:100%;border-radius:50%;margin-inline:auto;position:relative;
+  background:repeating-radial-gradient(circle at center,#111 0 2px,#1b1b1d 2px 4px);box-shadow:0 40px 80px -30px #000,inset 0 0 0 1px var(--line);animation:spin 6s linear infinite;animation-play-state:paused}
+.vinyl.playing{animation-play-state:running}
+.vinyl::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from var(--a),transparent 0 20%,#ffffff14 25%,transparent 30% 70%,#ffffff10 75%,transparent 80%)}
+.vinyl .label{position:absolute;inset:33%;border-radius:50%;background:var(--red);display:grid;place-items:center;text-align:center;font-family:var(--display);font-size:clamp(14px,2vw,22px);line-height:1;color:#fff}
+.vinyl .label::after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:var(--ink)}
+.vinyl .label span{translate:0 -28%}
+.mix-list{list-style:none;border-top:1px solid var(--line);margin:28px 0}
+.mix{display:flex;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.mix .pp{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--bone);display:grid;place-items:center;transition:background .3s}
+.mix .pp::after{content:"";border-left:10px solid var(--bone);border-block:6px solid transparent;margin-left:3px}
+.mix.on .pp{background:var(--red);border-color:var(--red)}
+.mix.on .pp::after{border:0;width:10px;height:12px;margin:0;border-inline:3px solid #fff}
+.mix div{flex:1}
+.mix b{display:block;font-weight:500}
+.mix small{color:var(--bone-dim);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.mix .dur{font-family:var(--serif);font-style:italic;color:var(--bone-dim)}
+.embed{margin-top:10px;font-size:13px;color:var(--bone-dim)}
+@media (max-width:900px){.mix-wrap{grid-template-columns:1fr}.vinyl{max-width:300px}}
+
+/* ---------- Formats ---------- */
+.formats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{position:relative;padding:30px 26px;border:1px solid var(--line);border-radius:6px;min-height:280px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;transition:border-color .4s,translate .4s var(--ease)}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),color-mix(in oklab,var(--red) 30%,transparent),transparent 45%);opacity:0;transition:opacity .4s}
+.card:hover{border-color:var(--red);translate:0 -4px}
+.card:hover::before{opacity:1}
+.card>*{position:relative}
+.card .ico{position:absolute;top:26px;left:26px;font-family:var(--serif);font-style:italic;font-size:22px;color:var(--red)}
+.card h3{font-family:var(--display);font-weight:400;font-size:30px;text-transform:uppercase;line-height:1;margin-bottom:10px}
+.card p{color:var(--bone-dim);font-size:14px}
+@media (max-width:1000px){.formats{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.formats{grid-template-columns:1fr}.card{min-height:220px}}
+
+/* ---------- Rider ---------- */
+#rider{background:var(--ink-2)}
+.rider{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,60px)}
+.rider h3{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--red);margin-bottom:18px;font-weight:600}
+.rider ul{list-style:none}
+.rider li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:16px}
+.rider li span{color:var(--bone-dim)}
+@media (max-width:900px){.rider{grid-template-columns:1fr}}
+
+/* ---------- Contact ---------- */
+#contact{overflow:hidden}
+#contact .big{font-family:var(--display);text-transform:uppercase;font-size:clamp(70px,17vw,280px);line-height:.82;letter-spacing:-.01em;margin-bottom:60px}
+#contact .big .outline{color:transparent;-webkit-text-stroke:1.5px var(--bone)}
+#contact .big .red{color:var(--red)}
+.contact-grid{display:block}
+.c-links{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(30px,5vw,80px)}
+.c-links{list-style:none}
+.c-links li:nth-child(-n+2){border-top:1px solid var(--line)}
+.c-links a{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);transition:padding .4s var(--ease),color .3s}
+.c-links a small{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-dim)}
+.c-links a b{font-weight:500;font-size:clamp(17px,1.6vw,22px)}
+.c-links a .arr{font-size:22px;transition:rotate .4s var(--ease),color .3s}
+.c-links a:hover{padding-left:14px}
+.c-links a:hover .arr{rotate:-45deg;color:var(--red)}
+
+/* ---------- Footer ---------- */
+footer{padding:40px var(--pad);border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim)}
+footer nav{display:flex;gap:22px;flex-wrap:wrap}
+footer a:hover{color:var(--red)}
+
+/* Progression de lecture */
+.progress{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--red);transform-origin:left;scale:0 1;z-index:60}
+@supports (animation-timeline: scroll()){
+  .progress{animation:prog linear both;animation-timeline:scroll(root)}
+  @keyframes prog{to{scale:1 1}}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero h1 .ch,.fade-up,.reveal{opacity:1;translate:none}
+}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"></div>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <a href="#top" class="logo">DEEPSON<span>.</span></a>
+  <ul id="menu">
+    <li><a href="#bio">Bio</a></li>
+    <li><a href="#venues">Références</a></li>
+    <li><a href="#sound">Le son</a></li>
+    <li><a href="#aftermovies">Aftermovies</a></li>
+    <li><a href="#mixes">Mixes</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="btn btn-red">Booker Deepson</a>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h18M3 16h18"/></svg>
+  </button>
+</header>
+
+<main id="top">
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="marble-bg marble" aria-hidden="true"></div>
+  <div>
+    <span class="eyebrow fade-up" style="--d:.1s">Press Kit · Saison 2026</span>
+    <h1 aria-label="Deepson"><span class="clip" aria-hidden="true">
+      <span class="ch" style="--i:0">D</span><span class="ch" style="--i:1">E</span><span class="ch" style="--i:2">E</span><span class="ch" style="--i:3">P</span><span class="ch" style="--i:4">S</span><span class="ch" style="--i:5">O</span><span class="ch" style="--i:6">N</span>
+    </span></h1>
+    <p class="role fade-up" style="--d:.9s">DJ &amp; Producer <b>French Riviera</b></p>
+    <p class="lead fade-up" style="--d:1.05s">House, Deep House et Soulful, relevées de R'n'B et de Hip-Hop. Le son chic de la Côte d'Azur, des beach clubs de Monaco aux nuits de Saint-Tropez.</p>
+    <div class="ctas fade-up" style="--d:1.2s">
+      <a href="#contact" class="btn btn-red">Booker Deepson
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#mixes" class="btn btn-ghost">Écouter</a>
+    </div>
+  </div>
+
+  <div class="hero-visual fade-up" style="--d:.5s">
+    <div class="frame ph">
+      <div class="marble" style="position:absolute;inset:0;opacity:.15"></div>
+      <span class="ph-label">Portrait hero<br>(photo N&amp;B verticale)</span>
+      <!-- <img src="images/hero.jpg" alt="DEEPSON, DJ et producteur de la Côte d'Azur"> -->
+    </div>
+    <svg class="ring" viewBox="0 0 150 150" aria-hidden="true">
+      <defs><path id="circ" d="M75,75 m-60,0 a60,60 0 1,1 120,0 a60,60 0 1,1 -120,0"/></defs>
+      <text><textPath href="#circ">Deep House · Soulful · Riviera Nights · </textPath></text>
+      <circle cx="75" cy="75" r="6" fill="#c1121f"/>
+    </svg>
+    <div class="now">
+      <div class="eq"><i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i><i style="--n:4"></i></div>
+      <div><small>Now playing</small>Sunset Session, Riviera</div>
+    </div>
+  </div>
+
+  <div class="stats fade-up" style="--d:1.4s">
+    <div class="stat"><strong data-count="25">0</strong><span>Établissements</span></div>
+    <div class="stat"><strong>18<em>&nbsp;ans</em></strong><span>Premières platines en club</span></div>
+    <div class="stat"><strong data-count="9">0</strong><span>Villes de la Riviera</span></div>
+    <div class="stat"><strong>DJ<em>/</em>PROD</strong><span>House · Deep · Soulful</span></div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-label="Établissements">
+  <div class="marquee-track">
+    <span>Twiga Monaco</span><span>Jimmy'z</span><span>Palm Beach Cannes</span><span>Nikki Beach</span><span>Vip Room Saint-Tropez</span><span>Amazónico</span><span>Carlton Beach Club</span><span>Anjuna Plage</span><span>La Rascasse</span><span>Monaco Yacht Show</span><span>Le Baïa Saint-Raphaël</span>
+    <span>Twiga Monaco</span><span>Jimmy'z</span><span>Palm Beach Cannes</span><span>Nikki Beach</span><span>Vip Room Saint-Tropez</span><span>Amazónico</span><span>Carlton Beach Club</span><span>Anjuna Plage</span><span>La Rascasse</span><span>Monaco Yacht Show</span><span>Le Baïa Saint-Raphaël</span>
+  </div>
+</div>
+
+<!-- ================= BIO ================= -->
+<section id="bio">
+  <div class="sec-head reveal">
+    <div><span class="num">01 / Bio</span><h2>Né sur la <span class="it">Riviera</span></h2></div>
+  </div>
+  <div class="bio-grid">
+    <div class="bio-img ph reveal">
+      <div class="marble" style="position:absolute;inset:0;opacity:.12"></div>
+      <span class="ph-label">Photo bio<br>(format 4:5)</span>
+      <!-- <img src="images/bio.jpg" alt="Portrait de DEEPSON"> -->
+      <span class="tag">French Riviera</span>
+    </div>
+    <div class="bio-text">
+      <p class="quote reveal">Une house élégante qui parle à toutes les générations, du premier verre au dernier morceau.</p>
+      <p class="reveal">DJ et producteur originaire de la Côte d'Azur, <strong>DEEPSON</strong> se lance à <strong>18 ans</strong> avec une ambition claire : jouer dans les adresses les plus exclusives de la Riviera.</p>
+      <p class="reveal">Très vite, son style soigné et sa sélection exigeante font la différence. Il fédère un public de tous âges et s'impose naturellement derrière les platines des clubs, beach clubs et restaurants les plus prisés, de <strong>Monaco</strong> à <strong>Cannes</strong>, de <strong>Nice</strong> à <strong>Saint-Tropez</strong>.</p>
+      <p class="reveal">Au fil des saisons, il forge une signature bien à lui : une alliance de <strong>House, Deep House, Tropical et Soulful House</strong>, saupoudrée de <strong>R'n'B</strong> et de <strong>Hip-Hop</strong> aux couleurs chic. Le résultat : une atmosphère élégante et une soirée dont on se souvient.</p>
+      <ul class="tags reveal">
+        <li>House</li><li>Deep House</li><li>Tropical House</li><li>Soulful House</li><li>R'n'B</li><li>Hip-Hop</li><li>Open Format chic</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RÉFÉRENCES ================= -->
+<section id="venues">
+  <div class="sec-head reveal">
+    <div><span class="num">02 / Références</span><h2>Ils l'ont <span class="it">invité</span></h2></div>
+    <p>Clubs mythiques, beach clubs et restaurants festifs : 25 adresses de la Riviera lui ont confié leurs platines.</p>
+  </div>
+  <div class="filters reveal" role="group" aria-label="Filtrer par ville">
+    <button aria-pressed="true" data-f="all">Toutes</button>
+    <button aria-pressed="false" data-f="Monaco">Monaco</button>
+    <button aria-pressed="false" data-f="Cannes">Cannes</button>
+    <button aria-pressed="false" data-f="Nice">Nice</button>
+    <button aria-pressed="false" data-f="Juan-les-Pins">Juan-les-Pins</button>
+    <button aria-pressed="false" data-f="Autres">Autres villes</button>
+  </div>
+  <ul class="venue-list" id="venueList"></ul>
+</section>
+
+<!-- ================= LE SON ================= -->
+<section id="sound">
+  <div class="sec-head reveal">
+    <div><span class="num">03 / Le son</span><h2>Une soirée, <span class="it">quatre temps</span></h2></div>
+    <p>DEEPSON construit une vraie montée. Il lit la salle et fait évoluer l'énergie du coucher de soleil jusqu'au dernier titre.</p>
+  </div>
+  <div class="sound-grid">
+    <article class="slot reveal">
+      <span class="time">19H</span>
+      <h3>Sunset Deep</h3>
+      <p>Deep House et Tropical House solaires pour l'apéritif, les rooftops et les fins de journée en beach club.</p>
+      <div class="bpm">110 à 118 BPM<div class="bar"><i style="--w:45%"></i></div></div>
+    </article>
+    <article class="slot reveal">
+      <span class="time">21H</span>
+      <h3>Dinner Soulful</h3>
+      <p>Soulful House, voix chaudes et grooves élégants pendant le dîner. L'ambiance monte sans couvrir les conversations.</p>
+      <div class="bpm">118 à 122 BPM<div class="bar"><i style="--w:62%"></i></div></div>
+    </article>
+    <article class="slot reveal">
+      <span class="time">23H</span>
+      <h3>Peak House</h3>
+      <p>House percutante et classiques revisités. Les tables se lèvent, le dancefloor prend le relais.</p>
+      <div class="bpm">122 à 126 BPM<div class="bar"><i style="--w:85%"></i></div></div>
+    </article>
+    <article class="slot reveal">
+      <span class="time">01H</span>
+      <h3>Late Night</h3>
+      <p>Edits R'n'B et Hip-Hop aux couleurs house pour les heures les plus festives de la nuit.</p>
+      <div class="bpm">Open format<div class="bar"><i style="--w:100%"></i></div></div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= AFTERMOVIES ================= -->
+<section id="aftermovies">
+  <div class="sec-head reveal">
+    <div><span class="num">04 / Aftermovies</span><h2>En <span class="it">live</span></h2></div>
+    <p>L'énergie d'une soirée DEEPSON en images. Clubs, beach clubs et événements de la Riviera.</p>
+  </div>
+  <div class="videos">
+    <!-- Remplacer chaque .ph par une vidéo : <video src="videos/aftermovie-1.mp4" poster="images/poster-1.jpg" muted loop playsinline preload="none"></video> -->
+    <div class="video ph reveal" data-video="">
+      <div class="marble" style="position:absolute;inset:0;opacity:.1"></div>
+      <span class="ph-label">Aftermovie principal</span>
+      <span class="play" aria-hidden="true"></span>
+      <span class="cap"><b>Aftermovie 2026</b>Saison Riviera</span>
+    </div>
+    <div class="video ph reveal" data-video="">
+      <span class="ph-label">Aftermovie 2</span>
+      <span class="play" aria-hidden="true"></span>
+      <span class="cap"><b>Monaco</b>Beach club</span>
+    </div>
+    <div class="video ph reveal" data-video="">
+      <span class="ph-label">Aftermovie 3</span>
+      <span class="play" aria-hidden="true"></span>
+      <span class="cap"><b>Cannes</b>Club night</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALERIE ================= -->
+<section id="gallery" style="padding-top:0">
+  <div class="sec-head reveal">
+    <div><span class="num">05 / Galerie</span><h2>Behind <span class="it">the decks</span></h2></div>
+  </div>
+  <div class="gallery">
+    <div class="ph g1 reveal"><span class="ph-label">Photo 1 · portrait</span><!-- <img src="images/g1.jpg" alt=""> --></div>
+    <div class="ph g2 reveal"><span class="ph-label">Photo 2 · platines</span></div>
+    <div class="ph g3 reveal"><span class="ph-label">Photo 3 · foule</span></div>
+    <div class="ph g4 reveal"><span class="ph-label">Photo 4 · ambiance</span></div>
+    <div class="ph g5 reveal"><span class="ph-label">Photo 5 · détail</span></div>
+    <div class="ph g6 reveal"><span class="ph-label">Photo 6 · sunset</span></div>
+    <div class="ph g7 reveal"><span class="ph-label">Photo 7 · club</span></div>
+  </div>
+</section>
+
+<!-- ================= MIXES ================= -->
+<section id="mixes">
+  <div class="mix-wrap">
+    <div class="vinyl reveal" id="vinyl"><div class="label"><span>DEEP<br>SON</span></div></div>
+    <div>
+      <div class="reveal"><span class="num">06 / Mixes</span><h2>Sur <span class="it">SoundCloud</span></h2></div>
+      <ul class="mix-list reveal">
+        <!-- Ajouter les vrais titres et liens SoundCloud -->
+        <li class="mix"><span class="pp"></span><div><b>Riviera Sunset Mix</b><small>Deep · Tropical House</small></div><span class="dur">60 min</span></li>
+        <li class="mix"><span class="pp"></span><div><b>Soulful Dinner Session</b><small>Soulful House</small></div><span class="dur">75 min</span></li>
+        <li class="mix"><span class="pp"></span><div><b>Late Night Edits</b><small>House · R'n'B · Hip-Hop</small></div><span class="dur">60 min</span></li>
+      </ul>
+      <a href="https://soundcloud.com/" target="_blank" rel="noopener" class="btn btn-ghost reveal">Écouter sur SoundCloud</a>
+      <!-- Lecteur SoundCloud : coller ici l'iframe d'intégration
+      <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=..."></iframe> -->
+    </div>
+  </div>
+</section>
+
+<!-- ================= FORMATS ================= -->
+<section id="formats">
+  <div class="sec-head reveal">
+    <div><span class="num">07 / Formats</span><h2>Pour <span class="it">chaque scène</span></h2></div>
+    <p>Une direction musicale adaptée au lieu, au public et au moment de la soirée.</p>
+  </div>
+  <div class="formats">
+    <article class="card reveal"><span class="ico">i.</span><h3>Clubs</h3><p>Résidences et guest sets peak time, en solo ou en ouverture de têtes d'affiche.</p></article>
+    <article class="card reveal"><span class="ico">ii.</span><h3>Beach clubs &amp; restaurants</h3><p>Sets longs du déjeuner au coucher du soleil, ambiance chic et dansante.</p></article>
+    <article class="card reveal"><span class="ico">iii.</span><h3>Événements privés</h3><p>Mariages, anniversaires et soirées sur yacht ou en villa, de Monaco à Saint-Tropez.</p></article>
+    <article class="card reveal"><span class="ico">iv.</span><h3>Marques &amp; corporate</h3><p>Lancements, soirées d'entreprise et événements hôteliers, avec une identité sonore sur mesure.</p></article>
+  </div>
+</section>
+
+<!-- ================= RIDER ================= -->
+<section id="rider">
+  <div class="sec-head reveal">
+    <div><span class="num">08 / Rider</span><h2>Setup <span class="it">technique</span></h2></div>
+  </div>
+  <!-- À faire valider par Deepson -->
+  <div class="rider">
+    <div class="reveal"><h3>Régie DJ</h3><ul>
+      <li>Platines <span>2 × Pioneer CDJ-3000</span></li>
+      <li>Table de mixage <span>Pioneer DJM-900NXS2 / V10</span></li>
+      <li>Alternative <span>CDJ-2000NXS2 acceptées</span></li>
+    </ul></div>
+    <div class="reveal"><h3>Son</h3><ul>
+      <li>Retour cabine <span>1 monitor actif</span></li>
+      <li>Micro <span>1 × Shure SM58</span></li>
+      <li>Branchement <span>Câble USB / LAN</span></li>
+    </ul></div>
+    <div class="reveal"><h3>Hospitalité</h3><ul>
+      <li>Boissons <span>Eau plate en cabine</span></li>
+      <li>Accès <span>Parking ou transfert</span></li>
+      <li>Arrivée <span>30 min avant le set</span></li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <p class="big reveal"><span class="outline">Let's</span><br>book <span class="red">it.</span></p>
+  <div class="contact-grid">
+    <ul class="c-links reveal">
+      <li><a href="mailto:contact@deepson.org"><span><small>Booking</small><b>contact@deepson.org</b></span><span class="arr">→</span></a></li>
+      <li><a href="https://wa.me/33619042967" target="_blank" rel="noopener"><span><small>Téléphone · WhatsApp</small><b>+33 6 19 04 29 67</b></span><span class="arr">→</span></a></li>
+      <li><a href="https://www.instagram.com/deepson.music/" target="_blank" rel="noopener"><span><small>Instagram</small><b>@deepson.music</b></span><span class="arr">→</span></a></li>
+      <li><a href="https://soundcloud.com/" target="_blank" rel="noopener"><span><small>SoundCloud</small><b>DEEPSON</b></span><span class="arr">→</span></a></li>
+      <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><span><small>Facebook</small><b>Tim Clark</b></span><span class="arr">→</span></a></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>© 2026 DEEPSON · DJ &amp; Producer · French Riviera</span>
+  <nav><a href="#bio">Bio</a><a href="#venues">Références</a><a href="#aftermovies">Aftermovies</a><a href="#mixes">Mixes</a><a href="#contact">Booking</a></nav>
+</footer>
+
+<script>
+/* Références (source : ancien press kit) */
+const venues=[
+  ["Twiga","Monaco"],["Jimmy'z","Monaco"],["Nikki Beach","Monaco"],["Amazónico","Monaco"],["Karé(ment)","Monaco"],["Brasserie de Monaco","Monaco"],["Maya Bay","Monaco"],["La Rascasse","Monaco"],["Monaco Yacht Show","Monaco"],
+  ["Palm Beach","Cannes"],["Carlton Beach Club","Cannes"],["Miramar Plage","Cannes"],["Chrystie","Cannes"],
+  ["Eros Club","Nice"],["High Club","Nice"],["La Bibliotech","Nice"],["Noto","Nice"],["OMA Club","Nice"],
+  ["Kiss Club","Juan-les-Pins"],["Le Minimal","Juan-les-Pins"],
+  ["Vip Room","Saint-Tropez"],["Anjuna Plage","Èze"],["Le Trendy","Saint-Laurent-du-Var"],
+  ["Le Baïa","Saint-Raphaël"],["Playa Chica","Mandelieu"]
+];
+const main=["Monaco","Cannes","Nice","Juan-les-Pins"];
+const alias={"Yacht Club de Monaco":"Monaco"};
+const list=document.getElementById('venueList');
+list.innerHTML=venues.map(([n,c],i)=>`<li class="venue" data-city="${alias[c]||(main.includes(c)?c:'Autres')}"><span class="idx">${String(i+1).padStart(2,'0')}</span><span class="name">${n}</span><span class="city">${c}</span></li>`).join('');
+document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.filters button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  const f=b.dataset.f;
+  document.querySelectorAll('.venue').forEach(v=>v.classList.toggle('hide',f!=='all'&&v.dataset.city!==f));
+}));
+
+/* Nav */
+const nav=document.getElementById('nav'),burger=document.getElementById('burger');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+burger.addEventListener('click',()=>{const o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+/* Reveal fallback + barres BPM */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal,.slot').forEach(el=>io.observe(el));
+
+/* Compteurs */
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,t=+el.dataset.count;let s=null;
+  const step=ts=>{s??=ts;const p=Math.min((ts-s)/1400,1);el.textContent=Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)};
+  setTimeout(()=>requestAnimationFrame(step),1400);co.unobserve(el)}));
+document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
+
+/* Curseur */
+const cur=document.querySelector('.cursor');
+addEventListener('pointermove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px'});
+document.querySelectorAll('a,button,.venue,.video,.mix').forEach(el=>{
+  el.addEventListener('pointerenter',()=>cur.classList.add('big'));
+  el.addEventListener('pointerleave',()=>cur.classList.remove('big'));
+});
+
+/* Lueur sur les cartes */
+document.querySelectorAll('.card').forEach(c=>c.addEventListener('pointermove',e=>{
+  const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px');
+}));
+
+/* Mixes : le vinyle tourne quand un mix est sélectionné */
+const vinyl=document.getElementById('vinyl');
+document.querySelectorAll('.mix').forEach(m=>m.addEventListener('click',()=>{
+  const on=!m.classList.contains('on');
+  document.querySelectorAll('.mix').forEach(x=>x.classList.remove('on'));
+  m.classList.toggle('on',on);vinyl.classList.toggle('playing',on);
+}));
+
+/* Vidéos : lecture au clic quand une vraie vidéo est en place */
+document.querySelectorAll('.video').forEach(v=>v.addEventListener('click',()=>{
+  const vid=v.querySelector('video');if(!vid)return;
+  if(vid.paused){vid.play();v.querySelector('.play').style.opacity=0}else{vid.pause();v.querySelector('.play').style.opacity=1}
+}));
+
+</script>
+</body>
+</html>
