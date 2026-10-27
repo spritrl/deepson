@@ -242,6 +242,7 @@ h2 .it{font-family:var(--serif);font-style:italic;text-transform:none;color:var(
 .mix b{display:block;font-weight:500}
 .mix small{color:var(--bone-dim);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
 .mix .dur{font-family:var(--serif);font-style:italic;color:var(--bone-dim)}
+.sc-player{display:block;margin:0 0 28px;border-radius:10px;overflow:hidden}
 .embed{margin-top:10px;font-size:13px;color:var(--bone-dim)}
 @media (max-width:900px){.mix-wrap{grid-template-columns:1fr}.vinyl{max-width:300px}}
 
@@ -496,14 +497,12 @@ footer a:hover{color:var(--red)}
     <div>
       <div class="reveal"><span class="num">06 / Mixes</span><h2>Sur <span class="it">SoundCloud</span></h2></div>
       <ul class="mix-list reveal">
-        <!-- Ajouter les vrais titres et liens SoundCloud -->
-        <li class="mix"><span class="pp"></span><div><b>Riviera Sunset Mix</b><small>Deep · Tropical House</small></div><span class="dur">60 min</span></li>
-        <li class="mix"><span class="pp"></span><div><b>Soulful Dinner Session</b><small>Soulful House</small></div><span class="dur">75 min</span></li>
-        <li class="mix"><span class="pp"></span><div><b>Late Night Edits</b><small>House · R'n'B · Hip-Hop</small></div><span class="dur">60 min</span></li>
+        <li class="mix" data-url="https://soundcloud.com/deepson-sc/deeper-feat-moana"><span class="pp"></span><div><b>Deeper</b><small>Deepson feat. Moana</small></div><span class="dur">Original</span></li>
+        <li class="mix" data-url="https://soundcloud.com/djdjav/deepson-greg-djav-bum-tam"><span class="pp"></span><div><b>Bum Tam</b><small>Deepson &amp; Greg Djav</small></div><span class="dur">Remix</span></li>
+        <li class="mix" data-url="https://soundcloud.com/awling/rawling-deepson-walker"><span class="pp"></span><div><b>Walker</b><small>Rawling &amp; Deepson</small></div><span class="dur">Original Mix</span></li>
       </ul>
-      <a href="https://soundcloud.com/" target="_blank" rel="noopener" class="btn btn-ghost reveal">Écouter sur SoundCloud</a>
-      <!-- Lecteur SoundCloud : coller ici l'iframe d'intégration
-      <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=..."></iframe> -->
+      <iframe id="sc-player" class="sc-player reveal" title="Lecteur SoundCloud" width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay" loading="lazy" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fdeepson-sc%2Fdeeper-feat-moana&color=%23c1121f&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+      <a href="https://soundcloud.com/deepson-sc" target="_blank" rel="noopener" class="btn btn-ghost reveal">Écouter sur SoundCloud</a>
     </div>
   </div>
 </section>
@@ -554,7 +553,7 @@ footer a:hover{color:var(--red)}
       <li><a href="mailto:contact@deepson.org"><span><small>Booking</small><b>contact@deepson.org</b></span><span class="arr">→</span></a></li>
       <li><a href="https://wa.me/33619042967" target="_blank" rel="noopener"><span><small>Téléphone · WhatsApp</small><b>+33 6 19 04 29 67</b></span><span class="arr">→</span></a></li>
       <li><a href="https://www.instagram.com/deepson.music/" target="_blank" rel="noopener"><span><small>Instagram</small><b>@deepson.music</b></span><span class="arr">→</span></a></li>
-      <li><a href="https://soundcloud.com/" target="_blank" rel="noopener"><span><small>SoundCloud</small><b>DEEPSON</b></span><span class="arr">→</span></a></li>
+      <li><a href="https://soundcloud.com/deepson-sc" target="_blank" rel="noopener"><span><small>SoundCloud</small><b>DEEPSON</b></span><span class="arr">→</span></a></li>
       <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><span><small>Facebook</small><b>Tim Clark</b></span><span class="arr">→</span></a></li>
     </ul>
   </div>
@@ -615,12 +614,26 @@ document.querySelectorAll('.card').forEach(c=>c.addEventListener('pointermove',e
   const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px');
 }));
 
-/* Mixes : le vinyle tourne quand un mix est sélectionné */
+/* Mixes : lecteur SoundCloud piloté par la liste, le vinyle tourne pendant la lecture */
 const vinyl=document.getElementById('vinyl');
-document.querySelectorAll('.mix').forEach(m=>m.addEventListener('click',()=>{
-  const on=!m.classList.contains('on');
-  document.querySelectorAll('.mix').forEach(x=>x.classList.remove('on'));
-  m.classList.toggle('on',on);vinyl.classList.toggle('playing',on);
+const mixes=[...document.querySelectorAll('.mix')];
+const scFrame=document.getElementById('sc-player');
+let sc=null,current=mixes[0];
+const setOn=on=>{mixes.forEach(x=>x.classList.toggle('on',on&&x===current));vinyl.classList.toggle('playing',on)};
+const api=document.createElement('script');
+api.src='https://w.soundcloud.com/player/api.js';
+api.onload=()=>{
+  sc=SC.Widget(scFrame);
+  sc.bind(SC.Widget.Events.PLAY,()=>setOn(true));
+  sc.bind(SC.Widget.Events.PAUSE,()=>setOn(false));
+  sc.bind(SC.Widget.Events.FINISH,()=>setOn(false));
+};
+document.head.appendChild(api);
+mixes.forEach(m=>m.addEventListener('click',()=>{
+  if(!sc)return;
+  if(m===current){sc.toggle();return}
+  current=m;
+  sc.load(m.dataset.url,{auto_play:true,color:'#c1121f',hide_related:true,show_comments:false,show_user:true,show_reposts:false,show_teaser:false,visual:false});
 }));
 
 /* Vidéos : lecture au clic quand une vraie vidéo est en place */
