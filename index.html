@@ -511,7 +511,7 @@ footer a:hover{color:var(--red)}
         <li class="mix" data-url="https://soundcloud.com/djdjav/deepson-greg-djav-bum-tam"><span class="pp"></span><div><b>Bum Tam</b><small>Deepson &amp; Greg Djav</small></div><span class="dur">Remix</span></li>
         <li class="mix" data-url="https://soundcloud.com/awling/rawling-deepson-walker"><span class="pp"></span><div><b>Walker</b><small>Rawling &amp; Deepson</small></div><span class="dur">Original Mix</span></li>
       </ul>
-      <iframe id="sc-player" class="sc-player reveal" title="Lecteur SoundCloud" width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay" loading="lazy" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fdeepson-sc%2Fdeeper-feat-moana&color=%23c1121f&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+      <iframe id="sc-player" class="sc-player reveal" title="Lecteur SoundCloud" width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" loading="lazy" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fdeepson-sc%2Fdeeper-feat-moana&color=%23c1121f&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
       <a href="https://soundcloud.com/deepson-700997279" target="_blank" rel="noopener" class="btn btn-ghost reveal">Écouter sur SoundCloud</a>
     </div>
   </div>
@@ -650,7 +650,7 @@ document.head.appendChild(api);
 mixes.forEach(m=>m.addEventListener('click',()=>{
   if(!sc)return;
   if(m===current){sc.toggle();return}
-  current=m;
+  setOn(false);current=m;
   sc.load(m.dataset.url,{auto_play:true,color:'#c1121f',hide_related:true,show_comments:false,show_user:true,show_reposts:false,show_teaser:false,visual:false});
 }));
 
