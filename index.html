@@ -300,6 +300,7 @@ footer a:hover{color:var(--red)}
   .hero h1 .ch,.fade-up,.reveal{opacity:1;translate:none}
 }
 </style>
+<link rel="preload" as="image" href="images/principale-1600.webp" imagesrcset="images/principale-640.webp 640w, images/principale-1024.webp 1024w, images/principale-1600.webp 1600w" imagesizes="(max-width:900px) 100vw, 50vw" fetchpriority="high">
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
@@ -343,7 +344,7 @@ footer a:hover{color:var(--red)}
 
   <div class="hero-visual fade-up" style="--d:.5s">
     <div class="frame ph">
-      <img src="images/principale.jpg" alt="DEEPSON, DJ et producteur de la Côte d'Azur" style="object-position:50% 25%" fetchpriority="high">
+      <img src="images/principale.jpg" srcset="images/principale-640.webp 640w, images/principale-1024.webp 1024w, images/principale-1600.webp 1600w" sizes="(max-width:900px) 100vw, 50vw" width="1600" height="1600" alt="DEEPSON, DJ et producteur de la Côte d'Azur" style="object-position:50% 25%" fetchpriority="high" decoding="async">
     </div>
     <svg class="ring" viewBox="0 0 150 150" aria-hidden="true">
       <defs><path id="circ" d="M75,75 m-60,0 a60,60 0 1,1 120,0 a60,60 0 1,1 -120,0"/></defs>
@@ -379,7 +380,7 @@ footer a:hover{color:var(--red)}
   </div>
   <div class="bio-grid">
     <div class="bio-img ph reveal">
-      <img src="images/secondaire.jpg" alt="Portrait de DEEPSON" style="object-position:50% 20%" loading="lazy">
+      <img src="images/secondaire.jpg" srcset="images/secondaire-640.webp 640w, images/secondaire-1024.webp 1024w, images/secondaire-1600.webp 1600w" sizes="(max-width:900px) 100vw, 45vw" width="1600" height="2400" alt="Portrait de DEEPSON" style="object-position:50% 20%" loading="lazy" decoding="async">
       <span class="tag">French Riviera</span>
     </div>
     <div class="bio-text">
