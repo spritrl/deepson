@@ -209,7 +209,7 @@ h2 .it{font-family:var(--serif);font-style:italic;text-transform:none;color:var(
 @media (max-width:560px){.sound-grid{grid-template-columns:1fr}.slot{min-height:auto}}
 
 /* ---------- Aftermovies ---------- */
-.videos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.videos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .video{border-radius:6px;cursor:pointer;aspect-ratio:9/16}
 .video::after{content:"";position:absolute;inset:auto 0 0;height:40%;background:linear-gradient(transparent,color-mix(in oklab,var(--ink) 80%,transparent));pointer-events:none;transition:opacity .4s}
 .video.playing::after,.video.playing .cap,.video.playing .play{opacity:0}
@@ -479,6 +479,7 @@ footer a:hover{color:var(--red)}
   </div>
   <div class="videos">
     <div class="video ph reveal"><video src="movies/aftermovie-gp-720.mp4" poster="images/poster-aftermovie-gp.webp" playsinline preload="none" aria-label="Aftermovie Grand Prix, Monaco"></video><span class="play" aria-hidden="true"></span><span class="cap"><b>Grand Prix</b>Monaco</span></div>
+    <div class="video ph reveal"><video src="movies/aftermovie-anjuna1-720.mp4" poster="images/poster-aftermovie-anjuna1.webp" playsinline preload="none" aria-label="Aftermovie Anjuna Plage, Èze"></video><span class="play" aria-hidden="true"></span><span class="cap"><b>Anjuna Plage</b>Èze</span></div>
     <div class="video ph reveal"><video src="movies/aftermovie-bibli-720.mp4" poster="images/poster-aftermovie-bibli.webp" playsinline preload="none" aria-label="Aftermovie La Bibliotech, Nice"></video><span class="play" aria-hidden="true"></span><span class="cap"><b>La Bibliotech</b>Nice</span></div>
     <div class="video ph reveal"><video src="movies/aftermovie-anjuna.mp4" poster="images/poster-aftermovie-anjuna.webp" playsinline preload="none" aria-label="Aftermovie Anjuna Plage, Èze"></video><span class="play" aria-hidden="true"></span><span class="cap"><b>Anjuna Plage</b>Èze</span></div>
   </div>
