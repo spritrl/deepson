@@ -105,7 +105,15 @@ a{color:inherit;text-decoration:none}
 .ring{position:absolute;right:-30px;top:40px;width:150px;aspect-ratio:1;animation:spin 18s linear infinite}
 .ring text{font-family:var(--sans);font-size:9.5px;letter-spacing:.32em;fill:var(--bone);text-transform:uppercase}
 @keyframes spin{to{rotate:360deg}}
-.now{position:absolute;left:0;bottom:40px;display:flex;align-items:center;gap:14px;padding:14px 18px;background:color-mix(in oklab,var(--ink) 70%,transparent);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:14px;font-size:12px}
+.now{position:absolute;left:0;bottom:40px;display:flex;align-items:center;gap:14px;padding:14px 18px;background:color-mix(in oklab,var(--ink) 70%,transparent);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:14px;color:inherit;font:inherit;font-size:12px;text-align:left;cursor:pointer;transition:border-color .3s}
+.now:hover,.now.on{border-color:var(--red)}
+.now .pp{flex:none;width:32px;height:32px;border-radius:50%;border:1px solid var(--bone);display:grid;place-items:center;transition:background .3s,border-color .3s}
+.now .pp::after{content:"";border-left:8px solid var(--bone);border-block:5px solid transparent;margin-left:2px}
+.now.on .pp{background:var(--red);border-color:var(--red)}
+.now.on .pp::after{border:0;width:8px;height:10px;margin:0;border-inline:2.5px solid #fff}
+.now .eq i{animation-play-state:paused}
+.now.on .eq i{animation-play-state:running}
+.hero-sc{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;border:0}
 .now small{display:block;color:var(--bone-dim);letter-spacing:.2em;text-transform:uppercase;font-size:10px}
 .eq{display:flex;gap:3px;align-items:flex-end;height:22px}
 .eq i{width:3px;background:var(--red);border-radius:2px;animation:eq 1s ease-in-out infinite;animation-delay:calc(var(--n) * -.17s)}
@@ -352,10 +360,12 @@ footer a:hover{color:var(--red)}
       <text><textPath href="#circ">Deep House · Soulful · Riviera Nights · </textPath></text>
       <circle cx="75" cy="75" r="6" fill="#c1121f"/>
     </svg>
-    <div class="now">
+    <button type="button" class="now" id="hero-play" aria-label="Écouter Deeper (feat. Moana)" aria-pressed="false">
+      <span class="pp" aria-hidden="true"></span>
       <div class="eq"><i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i><i style="--n:4"></i></div>
-      <div><small>Now playing</small>Sunset Session, Riviera</div>
-    </div>
+      <div><small>Now playing</small>Deeper (feat. Moana)</div>
+    </button>
+    <iframe id="hero-sc" class="hero-sc" title="Lecteur SoundCloud (hero)" tabindex="-1" aria-hidden="true" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fdeepson-sc%2Fdeeper-feat-moana&auto_play=false&visual=false"></iframe>
   </div>
 
   <div class="stats fade-up" style="--d:1.4s">
@@ -502,7 +512,7 @@ footer a:hover{color:var(--red)}
         <li class="mix" data-url="https://soundcloud.com/awling/rawling-deepson-walker"><span class="pp"></span><div><b>Walker</b><small>Rawling &amp; Deepson</small></div><span class="dur">Original Mix</span></li>
       </ul>
       <iframe id="sc-player" class="sc-player reveal" title="Lecteur SoundCloud" width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay" loading="lazy" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fdeepson-sc%2Fdeeper-feat-moana&color=%23c1121f&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
-      <a href="https://soundcloud.com/deepson-sc" target="_blank" rel="noopener" class="btn btn-ghost reveal">Écouter sur SoundCloud</a>
+      <a href="https://soundcloud.com/deepson-700997279" target="_blank" rel="noopener" class="btn btn-ghost reveal">Écouter sur SoundCloud</a>
     </div>
   </div>
 </section>
@@ -553,7 +563,7 @@ footer a:hover{color:var(--red)}
       <li><a href="mailto:contact@deepson.org"><span><small>Booking</small><b>contact@deepson.org</b></span><span class="arr">→</span></a></li>
       <li><a href="https://wa.me/33619042967" target="_blank" rel="noopener"><span><small>Téléphone · WhatsApp</small><b>+33 6 19 04 29 67</b></span><span class="arr">→</span></a></li>
       <li><a href="https://www.instagram.com/deepson.music/" target="_blank" rel="noopener"><span><small>Instagram</small><b>@deepson.music</b></span><span class="arr">→</span></a></li>
-      <li><a href="https://soundcloud.com/deepson-sc" target="_blank" rel="noopener"><span><small>SoundCloud</small><b>DEEPSON</b></span><span class="arr">→</span></a></li>
+      <li><a href="https://soundcloud.com/deepson-700997279" target="_blank" rel="noopener"><span><small>SoundCloud</small><b>DEEPSON</b></span><span class="arr">→</span></a></li>
       <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><span><small>Facebook</small><b>Tim Clark</b></span><span class="arr">→</span></a></li>
     </ul>
   </div>
@@ -618,16 +628,24 @@ document.querySelectorAll('.card').forEach(c=>c.addEventListener('pointermove',e
 const vinyl=document.getElementById('vinyl');
 const mixes=[...document.querySelectorAll('.mix')];
 const scFrame=document.getElementById('sc-player');
-let sc=null,current=mixes[0];
+const heroBtn=document.getElementById('hero-play');
+const heroFrame=document.getElementById('hero-sc');
+let sc=null,hero=null,current=mixes[0];
+const setHero=on=>{heroBtn.classList.toggle('on',on);heroBtn.setAttribute('aria-pressed',on)};
 const setOn=on=>{mixes.forEach(x=>x.classList.toggle('on',on&&x===current));vinyl.classList.toggle('playing',on)};
 const api=document.createElement('script');
 api.src='https://w.soundcloud.com/player/api.js';
 api.onload=()=>{
   sc=SC.Widget(scFrame);
-  sc.bind(SC.Widget.Events.PLAY,()=>setOn(true));
+  sc.bind(SC.Widget.Events.PLAY,()=>{setOn(true);hero?.pause()});
   sc.bind(SC.Widget.Events.PAUSE,()=>setOn(false));
   sc.bind(SC.Widget.Events.FINISH,()=>setOn(false));
+  hero=SC.Widget(heroFrame);
+  hero.bind(SC.Widget.Events.PLAY,()=>{setHero(true);sc.pause()});
+  hero.bind(SC.Widget.Events.PAUSE,()=>setHero(false));
+  hero.bind(SC.Widget.Events.FINISH,()=>setHero(false));
 };
+heroBtn.addEventListener('click',()=>hero?.toggle());
 document.head.appendChild(api);
 mixes.forEach(m=>m.addEventListener('click',()=>{
   if(!sc)return;
