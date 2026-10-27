@@ -1,0 +1,12 @@
+.DS_Store
+
+# Sources brutes (seules les versions optimisées sont publiées)
+original/
+propre/
+*.ARW
+images/portrait.png
+images/amazonico-monaco.jpeg
+movies/amazonico-monaco.MOV
+movies/bibliotech-nice.MP4
+movies/edit-studio.MP4
+movies/gpmonaco.MOV
