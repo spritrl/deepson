@@ -13,3 +13,7 @@ movies/gpmonaco.MOV
 movies/aftermovie-bibli.mp4
 movies/aftermovie-gp.mp4
 movies/aftermovie-anjuna1.mov
+
+# Dossier download : seul le zip des photos est publié
+download/*
+!download/deepson-photos.zip
