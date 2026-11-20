@@ -17,3 +17,8 @@ movies/aftermovie-anjuna1.mov
 # Dossier download : seul le zip des photos est publié
 download/*
 !download/deepson-photos.zip
+
+# Dépendances et config locale
+node_modules/
+.vercel/
+.env*

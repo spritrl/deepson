@@ -834,11 +834,15 @@ form.addEventListener('submit',async e=>{
   const btn=form.querySelector('[type=submit]');
   btn.disabled=true;msg.textContent='Envoi en cours…';
   const subject=`Proposition de booking · ${data.type} · ${data.date} · ${data.lieu}`;
+  /* Envoi en parallèle : email (FormSubmit) + enregistrement pour le panel admin */
+  const sendMail=fetch(`https://formsubmit.co/ajax/${BOOK_TO}`,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+      body:JSON.stringify({...data,_subject:subject,_template:'table',_captcha:'false'})})
+    .then(async r=>{const j=await r.json().catch(()=>({}));if(!r.ok||j.success===false||j.success==='false')throw new Error(j.message||r.status)});
+  const save=fetch('/api/booking',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+    .then(r=>{if(!r.ok)throw new Error(r.status)});
   try{
-    const r=await fetch(`https://formsubmit.co/ajax/${BOOK_TO}`,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
-      body:JSON.stringify({...data,_subject:subject,_template:'table',_captcha:'false'})});
-    const j=await r.json().catch(()=>({}));
-    if(!r.ok||j.success===false||j.success==='false')throw new Error(j.message||r.status);
+    const [mail,saved]=await Promise.allSettled([sendMail,save]);
+    if(mail.status==='rejected'&&saved.status==='rejected')throw mail.reason;
     form.reset();
     msg.classList.add('ok');msg.textContent='Merci ! Votre proposition a bien été envoyée. DEEPSON revient vers vous très vite.';
   }catch(err){
@@ -847,6 +851,37 @@ form.addEventListener('submit',async e=>{
     msg.innerHTML=`L'envoi n'a pas abouti. <a href="mailto:${BOOK_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}" style="text-decoration:underline">Envoyer par email</a> ou écrivez sur WhatsApp.`;
   }finally{btn.disabled=false}
 });
+
+/* Statistiques (panel /admin) : une visite par session, et tous les clics.
+   Aucun cookie ni donnée personnelle : seule la date de dernière visite est gardée en local. */
+(()=>{
+  if(/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname))return;
+  const send=p=>{try{const b=JSON.stringify(p);navigator.sendBeacon?.('/api/track',b)||fetch('/api/track',{method:'POST',body:b,keepalive:true})}catch{}};
+  const ls=(k,v)=>{try{return v===undefined?localStorage.getItem(k):localStorage.setItem(k,v)}catch{return null}};
+  const ss=(k,v)=>{try{return v===undefined?sessionStorage.getItem(k):sessionStorage.setItem(k,v)}catch{return null}};
+
+  if(!ss('ds_v')){
+    ss('ds_v','1');
+    const today=new Date().toLocaleDateString('en-CA');
+    const nv=ls('ds_d')!==today;ls('ds_d',today);
+    const q=new URLSearchParams(location.search);
+    let src=q.get('utm_source')||'';
+    if(!src&&document.referrer){try{const h=new URL(document.referrer).hostname.replace(/^www\./,'');if(h!==location.hostname)src=h}catch{}}
+    send({t:'visit',nv,src,dev:matchMedia('(max-width:900px)').matches?'mobile':'desktop'});
+  }
+
+  const zones={nav:'Menu',top:'Hero',venues:'Références',sound:'Le son',aftermovies:'Aftermovies',gallery:'Galerie',mixes:'Mixes',formats:'Formats',rider:'Rider',contact:'Contact',booking:'Booking',bio:'Bio',lightbox:'Galerie (plein écran)',fab:'Bouton flottant'};
+  const txt=s=>(s||'').replace(/[→↓↻✦]/g,'').replace(/\s+/g,' ').trim();
+  document.addEventListener('click',e=>{
+    const el=e.target.closest('a,button,[role=button],.mix,.video,.chips label');
+    if(!el)return;
+    const z=el.closest('#fab,#lightbox,section[id],section.hero,header,footer');
+    const zone=z?.id==='fab'?'fab':z?.classList.contains('hero')?'top':z?.tagName==='HEADER'?'nav':z?.tagName==='FOOTER'?'footer':z?.id;
+    const name=txt(el.dataset.track||el.getAttribute('aria-label')||el.querySelector('video')?.getAttribute('aria-label')
+      ||el.querySelector('.cap')?.textContent||el.querySelector('h3')?.textContent||el.querySelector('b')?.textContent||el.querySelector('img')?.alt||el.textContent).slice(0,60);
+    if(name)send({t:'click',l:`${zones[zone]||(zone==='footer'?'Footer':'Autre')} · ${name}`});
+  },{capture:true});
+})();
 
 </script>
 </body>
