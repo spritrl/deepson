@@ -290,6 +290,49 @@ body.lb-lock{overflow:hidden}
 .rider li span{color:var(--bone-dim)}
 @media (max-width:900px){.rider{grid-template-columns:1fr}}
 
+/* ---------- Bandeaux CTA booking ---------- */
+.cta-band{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px 40px;margin-top:clamp(40px,6vw,70px);padding:clamp(24px,3vw,34px) clamp(20px,3vw,40px);border:1px solid var(--line);border-radius:8px;background:linear-gradient(100deg,color-mix(in oklab,var(--red) 16%,transparent),transparent 60%)}
+.cta-band p{font-family:var(--serif);font-size:clamp(24px,2.6vw,36px);line-height:1.1}
+.cta-band p small{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-dim);margin-bottom:8px}
+.cta-band p em{color:var(--red)}
+.card .go{margin-top:18px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bone-dim);transition:color .3s}
+.card:hover .go{color:var(--bone)}
+
+/* CTA flottant (mobile) */
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:55;box-shadow:0 14px 40px -10px #000;opacity:0;translate:0 20px;pointer-events:none;transition:opacity .4s var(--ease),translate .4s var(--ease),background .35s,color .35s,border-color .35s}
+.fab.show{opacity:1;translate:0 0;pointer-events:auto}
+@media (min-width:901px){.fab{display:none}}
+
+/* ---------- Formulaire de booking ---------- */
+#booking{background:var(--ink-2)}
+.book{display:grid;grid-template-columns:repeat(2,1fr);gap:22px clamp(28px,5vw,80px)}
+.book .full{grid-column:1/-1}
+.field{display:flex;flex-direction:column;gap:10px;min-width:0}
+.field>span,.book legend{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-dim)}
+.field>span i{color:var(--red);font-style:normal}
+.book input:not([type=radio]),.book select,.book textarea{font:inherit;font-size:16px;color:var(--bone);background:var(--ink);border:1px solid var(--line);border-radius:6px;padding:14px 16px;width:100%;color-scheme:dark;transition:border-color .3s}
+.book input:not([type=radio]),.book select{height:54px;line-height:1.2}
+.book select{appearance:none;-webkit-appearance:none;padding-right:44px;cursor:pointer;background:var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a9a49e' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center/16px}
+.book textarea{min-height:140px;resize:vertical}
+.book input:focus,.book select:focus,.book textarea:focus{outline:none;border-color:var(--red)}
+.book fieldset{border:0;display:flex;flex-direction:column;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{cursor:pointer;position:relative}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--bone-dim);border:1px solid var(--line);border-radius:999px;padding:10px 18px;transition:all .3s}
+.chips label:hover span{color:var(--bone);border-color:var(--bone-dim)}
+.chips input:checked+span{color:#fff;background:var(--red);border-color:var(--red)}
+.chips input:focus-visible+span{outline:2px solid var(--bone);outline-offset:2px}
+.book .hp{position:absolute;left:-9999px}
+.book-foot{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:14px}
+.book-foot .btn{cursor:pointer;font-family:inherit}
+.book-foot .btn[disabled]{opacity:.6;cursor:wait}
+.book-msg{font-size:14px;color:var(--bone-dim)}
+.book-msg.ok{color:var(--bone)}
+.book-msg.err{color:#ff6b6b}
+@media (max-width:700px){.book{gap:20px 14px}}
+@media (max-width:520px){.book{grid-template-columns:1fr}}
+
 /* ---------- Contact ---------- */
 #contact{overflow:hidden}
 #contact .big{font-family:var(--display);text-transform:uppercase;font-size:clamp(70px,17vw,280px);line-height:.82;letter-spacing:-.01em;margin-bottom:60px}
@@ -340,8 +383,9 @@ footer a:hover{color:var(--red)}
     <li><a href="#aftermovies">Aftermovies</a></li>
     <li><a href="#mixes">Mixes</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="#booking">Booking</a></li>
   </ul>
-  <a href="#contact" class="btn btn-red">Booker Deepson</a>
+  <a href="#booking" class="btn btn-red">Booker Deepson</a>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h18M3 16h18"/></svg>
   </button>
@@ -359,7 +403,7 @@ footer a:hover{color:var(--red)}
     <p class="role fade-up" style="--d:.9s">DJ &amp; Producer <b>French Riviera</b></p>
     <p class="lead fade-up" style="--d:1.05s">House, Deep House et Soulful, et une sélection ouverte à tous les publics. Le son chic de la Côte d'Azur, des beach clubs aux nuits de Monaco à Saint-Tropez.</p>
     <div class="ctas fade-up" style="--d:1.2s">
-      <a href="#contact" class="btn btn-red">Booker Deepson
+      <a href="#booking" class="btn btn-red">Booker Deepson
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       <a href="#mixes" class="btn btn-ghost">Écouter</a>
     </div>
@@ -435,6 +479,10 @@ footer a:hover{color:var(--red)}
     <button aria-pressed="false" data-f="Autres">Autres villes</button>
   </div>
   <ul class="venue-list" id="venueList"></ul>
+  <div class="cta-band reveal">
+    <p><small>Établissement, beach club, événement</small>Et si la <em>26<sup>e</sup></em> adresse, c'était la vôtre&nbsp;?</p>
+    <a href="#booking" class="btn btn-red">Proposer une date</a>
+  </div>
 </section>
 
 <!-- ================= LE SON ================= -->
@@ -469,6 +517,10 @@ footer a:hover{color:var(--red)}
       <div class="bpm">Open format<div class="bar"><i style="--w:100%"></i></div></div>
     </article>
   </div>
+  <div class="cta-band reveal">
+    <p><small>Du sunset au late night</small>On construit <em>votre</em> soirée&nbsp;?</p>
+    <a href="#booking" class="btn btn-red">Booker Deepson</a>
+  </div>
 </section>
 
 <!-- ================= AFTERMOVIES ================= -->
@@ -500,6 +552,10 @@ footer a:hover{color:var(--red)}
     <div class="ph reveal"><video src="movies/bibliotech-nice-720.mp4" poster="images/poster-bibliotech-nice.webp" muted loop playsinline preload="none" aria-label="La Bibliotech · Nice"></video><span class="cap">La Bibliotech · Nice</span></div>
     <div class="ph reveal"><video src="movies/edit-studio-720.mp4" poster="images/poster-edit-studio.webp" muted loop playsinline preload="none" aria-label="En studio"></video><span class="cap">En studio</span></div>
   </div>
+  <div class="cta-band reveal">
+    <p><small>Prochain aftermovie</small>Votre événement, <em>en live</em>.</p>
+    <a href="#booking" class="btn btn-red">Faire une proposition</a>
+  </div>
 </section>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galerie" aria-hidden="true">
@@ -521,7 +577,10 @@ footer a:hover{color:var(--red)}
         <li class="mix" data-url="https://soundcloud.com/awling/rawling-deepson-walker"><span class="pp"></span><div><b>Walker</b><small>Rawling &amp; Deepson</small></div><span class="dur">Original Mix</span></li>
       </ul>
       <iframe id="sc-player" class="sc-player reveal" title="Lecteur SoundCloud" width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" loading="lazy" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fdeepson-sc%2Fdeeper-feat-moana&color=%23c1121f&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
-      <a href="https://soundcloud.com/deepson-700997279" target="_blank" rel="noopener" class="btn btn-ghost reveal">Écouter sur SoundCloud</a>
+      <div class="reveal" style="display:flex;flex-wrap:wrap;gap:12px">
+        <a href="#booking" class="btn btn-red">Booker ce son</a>
+        <a href="https://soundcloud.com/deepson-700997279" target="_blank" rel="noopener" class="btn btn-ghost">Écouter sur SoundCloud</a>
+      </div>
     </div>
   </div>
 </section>
@@ -533,10 +592,10 @@ footer a:hover{color:var(--red)}
     <p>Une direction musicale adaptée au lieu, au public et au moment de la soirée.</p>
   </div>
   <div class="formats">
-    <article class="card reveal"><span class="ico">i.</span><h3>Clubs</h3><p>Résidences et guest sets peak time, en solo ou en ouverture de têtes d'affiche.</p></article>
-    <article class="card reveal"><span class="ico">ii.</span><h3>Beach clubs &amp; restaurants</h3><p>Sets longs du déjeuner au coucher du soleil, ambiance chic et dansante.</p></article>
-    <article class="card reveal"><span class="ico">iii.</span><h3>Événements privés</h3><p>Mariages, anniversaires et soirées sur yacht ou en villa, de Monaco à Saint-Tropez.</p></article>
-    <article class="card reveal"><span class="ico">iv.</span><h3>Marques &amp; corporate</h3><p>Lancements, soirées d'entreprise et événements hôteliers, avec une identité sonore sur mesure.</p></article>
+    <a href="#booking" data-type="Club" class="card reveal"><span class="ico">i.</span><h3>Clubs</h3><p>Résidences et guest sets peak time, en solo ou en ouverture de têtes d'affiche.</p><span class="go">Demander ce format →</span></a>
+    <a href="#booking" data-type="Beach club / Restaurant" class="card reveal"><span class="ico">ii.</span><h3>Beach clubs &amp; restaurants</h3><p>Sets longs du déjeuner au coucher du soleil, ambiance chic et dansante.</p><span class="go">Demander ce format →</span></a>
+    <a href="#booking" data-type="Événement privé" class="card reveal"><span class="ico">iii.</span><h3>Événements privés</h3><p>Mariages, anniversaires et soirées sur yacht ou en villa, de Monaco à Saint-Tropez.</p><span class="go">Demander ce format →</span></a>
+    <a href="#booking" data-type="Marque / Corporate" class="card reveal"><span class="ico">iv.</span><h3>Marques &amp; corporate</h3><p>Lancements, soirées d'entreprise et événements hôteliers, avec une identité sonore sur mesure.</p><span class="go">Demander ce format →</span></a>
   </div>
 </section>
 
@@ -578,12 +637,50 @@ footer a:hover{color:var(--red)}
     </ul>
   </div>
 </section>
+
+<!-- ================= BOOKING ================= -->
+<section id="booking">
+  <div class="sec-head reveal">
+    <div><span class="num">09 / Booking</span><h2>Proposer <span class="it">une date</span></h2></div>
+    <p>Quelques détails sur votre événement et DEEPSON revient vers vous rapidement avec ses disponibilités.</p>
+  </div>
+  <form class="book reveal" id="bookForm" novalidate>
+    <fieldset class="full">
+      <legend>Type d'événement <i style="color:var(--red);font-style:normal">*</i></legend>
+      <div class="chips">
+        <label><input type="radio" name="type" value="Club" required><span>Club</span></label>
+        <label><input type="radio" name="type" value="Beach club / Restaurant"><span>Beach club / Restaurant</span></label>
+        <label><input type="radio" name="type" value="Événement privé"><span>Événement privé</span></label>
+        <label><input type="radio" name="type" value="Marque / Corporate"><span>Marque / Corporate</span></label>
+        <label><input type="radio" name="type" value="Autre"><span>Autre</span></label>
+      </div>
+    </fieldset>
+    <label class="field"><span>Date <i>*</i></span><input type="date" name="date" required></label>
+    <label class="field"><span>Horaires du set</span><input type="text" name="horaires" placeholder="Ex. 22h – 3h"></label>
+    <label class="field full"><span>Ville / Lieu <i>*</i></span><input type="text" name="lieu" required placeholder="Ex. Monaco, villa à Saint-Tropez"></label>
+    <label class="field"><span>Nombre d'invités</span><select name="invites"><option value="">Non précisé</option><option>Moins de 50</option><option>50 à 150</option><option>150 à 400</option><option>Plus de 400</option></select></label>
+    <label class="field"><span>Budget envisagé</span><select name="budget"><option value="">À discuter</option><option>Moins de 500 €</option><option>500 à 1 000 €</option><option>1 000 à 2 000 €</option><option>Plus de 2 000 €</option></select></label>
+    <label class="field"><span>Nom <i>*</i></span><input type="text" name="nom" required autocomplete="name"></label>
+    <label class="field"><span>Établissement / Société</span><input type="text" name="etablissement" autocomplete="organization"></label>
+    <label class="field"><span>Email <i>*</i></span><input type="email" name="email" required autocomplete="email"></label>
+    <label class="field"><span>Téléphone</span><input type="tel" name="telephone" autocomplete="tel"></label>
+    <label class="field full"><span>Votre proposition</span><textarea name="message" placeholder="Ambiance souhaitée, durée du set, matériel sur place, conditions…"></textarea></label>
+    <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="book-foot full">
+      <button type="submit" class="btn btn-red">Envoyer la proposition
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <p class="book-msg" id="bookMsg" role="status" aria-live="polite"></p>
+    </div>
+  </form>
+</section>
 </main>
 
 <footer>
   <span>© 2026 DEEPSON · DJ &amp; Producer · French Riviera</span>
-  <nav><a href="#bio">Bio</a><a href="#venues">Références</a><a href="#aftermovies">Aftermovies</a><a href="#mixes">Mixes</a><a href="#contact">Booking</a></nav>
+  <nav><a href="#bio">Bio</a><a href="#venues">Références</a><a href="#aftermovies">Aftermovies</a><a href="#mixes">Mixes</a><a href="#contact">Contact</a><a href="#booking">Booking</a></nav>
 </footer>
+
+<a href="#booking" class="btn btn-red fab" id="fab">Booker Deepson</a>
 
 <script>
 /* Références (source : ancien press kit) */
@@ -704,6 +801,52 @@ lb.querySelector('.lb-next').addEventListener('click',()=>lbShow(lbIdx+1));
 lb.addEventListener('click',e=>{if(e.target===lb)lbClose()});
 addEventListener('keydown',e=>{if(lbIdx<0)return;
   if(e.key==='Escape')lbClose();else if(e.key==='ArrowLeft')lbShow(lbIdx-1);else if(e.key==='ArrowRight')lbShow(lbIdx+1)});
+
+/* Booking : les cartes Formats pré-sélectionnent le type d'événement */
+const form=document.getElementById('bookForm'),msg=document.getElementById('bookMsg');
+document.querySelectorAll('[data-type]').forEach(c=>c.addEventListener('click',()=>{
+  const r=form.querySelector(`input[name="type"][value="${c.dataset.type}"]`);if(r)r.checked=true;
+}));
+
+/* CTA flottant : visible dès que la section Bio (« Né sur la Riviera ») arrive à l'écran,
+   masqué quand le contact ou le formulaire est visible */
+const fab=document.getElementById('fab'),bioEl=document.getElementById('bio'),endEl=document.getElementById('contact');
+const fabUpdate=()=>{
+  const h=innerHeight;
+  fab.classList.toggle('show',bioEl.getBoundingClientRect().top<h*.85&&endEl.getBoundingClientRect().top>h);
+};
+addEventListener('scroll',fabUpdate,{passive:true});addEventListener('resize',fabUpdate);fabUpdate();
+
+/* Envoi du formulaire (FormSubmit → contact@deepson.fr), repli sur un email pré-rempli */
+const BOOK_TO='contact@deepson.fr';
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  msg.className='book-msg';
+  if(!form.checkValidity()){
+    const bad=form.querySelector('input:invalid,select:invalid,textarea:invalid');
+    msg.classList.add('err');
+    msg.textContent=bad?.name==='type'?'Choisissez un type d\'événement.':'Merci de compléter les champs obligatoires (*).';
+    bad?.focus();return;
+  }
+  const data=Object.fromEntries(new FormData(form));
+  if(data._honey)return;
+  delete data._honey;
+  const btn=form.querySelector('[type=submit]');
+  btn.disabled=true;msg.textContent='Envoi en cours…';
+  const subject=`Proposition de booking · ${data.type} · ${data.date} · ${data.lieu}`;
+  try{
+    const r=await fetch(`https://formsubmit.co/ajax/${BOOK_TO}`,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+      body:JSON.stringify({...data,_subject:subject,_template:'table',_captcha:'false'})});
+    const j=await r.json().catch(()=>({}));
+    if(!r.ok||j.success===false||j.success==='false')throw new Error(j.message||r.status);
+    form.reset();
+    msg.classList.add('ok');msg.textContent='Merci ! Votre proposition a bien été envoyée. DEEPSON revient vers vous très vite.';
+  }catch(err){
+    const body=Object.entries(data).filter(([,v])=>v).map(([k,v])=>`${k} : ${v}`).join('\n');
+    msg.classList.add('err');
+    msg.innerHTML=`L'envoi n'a pas abouti. <a href="mailto:${BOOK_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}" style="text-decoration:underline">Envoyer par email</a> ou écrivez sur WhatsApp.`;
+  }finally{btn.disabled=false}
+});
 
 </script>
 </body>
